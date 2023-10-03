@@ -89,7 +89,23 @@ and push to your github repository.
 .  
   * $W(n)=W(\sqrt{n})+1$
 .  
-.  $W(n)=O(log(log(n)))$
+.  base case: n = 2
+.  
+.  $n^{1/2^i}=2$
+.  
+.  $log_2(n^{1/2^i})=log_2(2)$
+.  
+.  $(1/2^i)log_2(n)=1$
+.  
+.  $log_2(n)=2^i$
+.  
+.  $log_2(log_2(n))=log_2(2^i)$
+.  
+.  $log_2(log_2(n))=i$
+.  
+.  i = tree depth
+.  
+.  $W(n)=O(log_2(log_2(n)))$
 
 
 2. Suppose that for a given task you are choosing between the following three algorithms:
