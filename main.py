@@ -61,11 +61,18 @@ def subquadratic_multiply(x, y):
         x_right = x_split[1]
         y_left = y_split[0]
         y_right = y_split[1]
-        x = BinaryNumber(subquadratic_multiply(x_left, y_left))
-        y = BinaryNumber(subquadratic_multiply(x_right, y_right))
-        return 2
+        xlyl = subquadratic_multiply(x_left, y_left)
+        xryr = subquadratic_multiply(x_right, y_right)
+        xlpxr = BinaryNumber(x_left.decimal_val + x_right.decimal_val)
+        ylpyr = BinaryNumber(y_left.decimal_val + y_right.decimal_val)
+        xlpxr_ylpyr = subquadratic_multiply(xlpxr, ylpyr)
+        xlyrpxryl = BinaryNumber(xlpxr_ylpyr.decimal_val - xlyl.decimal_val - xryr.decimal_val)
+        
+        a = bit_shift(xlyrpxryl, len(xvec) // 2)
+        b = bit_shift(xlyl, len(xvec))
+
+        return BinaryNumber(a.decimal_val + b.decimal_val + xryr.decimal_val)
     ###
-print(subquadratic_multiply(BinaryNumber(4), BinaryNumber(3)))
 
 
 def time_multiply(x, y, f):
